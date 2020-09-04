@@ -1,13 +1,13 @@
-masOS實作web
+masOS實作web  
     ref:https://github.com/ccwang002/ccwang002.github.io/blob/src/content/blogs/2015-09/0928_flask_draw_member.md
     
     
 #### 安裝
-安裝sqlitebrowser
+安裝sqlitebrowser  
     brew cask install db-browser-for-sqlite
 
 #### 啟動
-安裝Python虛擬環境
+安裝Python虛擬環境  
     conda activate py37_tf1130
     
 ## 安裝環境
