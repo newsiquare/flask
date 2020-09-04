@@ -1,7 +1,7 @@
 macOS
 
 安裝sqlitebrowser
-  brew cask install db-browser-for-sqlite  
+    brew cask install db-browser-for-sqlite  
 
 
 
