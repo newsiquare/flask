@@ -1,4 +1,9 @@
-# flask
-    SQlite
-    SQLAlchemy
-    
+macOS
+
+安裝sqlitebrowser
+  brew cask install db-browser-for-sqlite  
+
+
+
+
+
