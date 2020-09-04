@@ -3,7 +3,7 @@ macOS
     brew cask install db-browser-for-sqlite
 
 ## 啟動Python虛擬環境
-    conda acitvate py37_tf1130
+    conda activate py37_tf1130
     
 ## 安裝SQlite, SQLAlchemy
     pip install flask jinja2
