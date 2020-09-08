@@ -1,0 +1,50 @@
+Windows
+
+安裝Docker 執行檔
+之後無法再CMD內執行 ./test.sh
+
+在安裝Git
+用Git CMD可執行 ./test.sh
+
+用VSCode CMD執行
+docker-compose up -d --build
+
+出現error，原来是nginx listen的80端口被占用
+listen tcp 0.0.0.0:80: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+
+查询谁占了80端口 
+netstat -aon|findstr "80"  (也可 netstat -nao |find "0.0.0.0:80")
+
+出現
+TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4
+TCP    0.0.0.0:1540           0.0.0.0:0              LISTENING       3980
+TCP    0.0.0.0:7010           0.0.0.0:0              LISTENING       4808
+TCP    0.0.0.0:8060           0.0.0.0:0              LISTENING       4
+TCP    0.0.0.0:8070           0.0.0.0:0              LISTENING       4
+TCP    0.0.0.0:8081           0.0.0.0:0              LISTENING       8552
+TCP    127.0.0.1:5354         0.0.0.0:0              LISTENING       4800
+...
+
+查看80端口 4 对应的任务
+tasklist|findstr "4"
+
+出現
+System                           4 Services                   0        872 K
+Secure System                   88 Services                   0     73,664 K
+Registry                       152 Services                   0     24,356 K
+smss.exe                       624 Services                   0      1,196 K
+csrss.exe                      880 Services                   0      5,584 K
+wininit.exe                    984 Services                   0      6,700 K
+services.exe                   436 Services                   0     10,992 K
+LsaIso.exe                     740 Services                   0      2,812 K
+...
+
+上面太雜亂看不出，改用 
+tasklist /FI "PID eq 4"
+
+出現
+映像名稱                       PID 工作階段名稱      工作階段 #    RAM使用量
+========================= ======== ================ =========== ============
+System                           4 Services                   0        876 K
+
+檢查發現 4 的是 SYSTEM 這個程序占用。
