@@ -1,4 +1,5 @@
-Windows
+Windows 實作 AnnoMachine
+https://github.com/chunml/annomachine
 
 安裝Docker 執行檔
 之後無法再CMD內執行 ./test.sh
@@ -55,3 +56,25 @@ System                           4 Services                   0        876 K
 2. 位置 "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP"
 3. 把 REG_DWORD 類型的項 Start 的值改為 0，重啟電腦。
 <註>如果有安裝skype ，也可能佔用到80 port。到skype設定，將預設的port號改掉即可。
+
+完成上述後，成功去除占用port 80 的問題。
+用VSCode CMD執行
+docker-compose up -d --build
+
+出現
+Successfully tagged annomachine_nginx:latest
+Starting annomachine_db_1 ... done
+Starting annomachine_backend_1 ... done
+Starting annomachine_frontend_1 ... done
+Starting annomachine_nginx_1    ... done
+
+輸入docker ps，成功啟動nginx
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                    NAMES
+74e600c397fb        annomachine_nginx      "nginx -g 'daemon of…"   43 minutes ago      Up About a minute   0.0.0.0:80->80/tcp       annomachine_nginx_1
+656baa8c4244        annomachine_frontend   "docker-entrypoint.s…"   43 minutes ago      Up About a minute   0.0.0.0:8081->8080/tcp   annomachine_frontend_1
+38b4219a340b        annomachine_db         "docker-entrypoint.s…"   43 minutes ago      Up About a minute   0.0.0.0:5433->5432/tcp   annomachine_db_1
+
+
+打開Chome, 輸入localhost，出現AnnMachine首頁
+點擊Register, 輸入username / password，卻依然無法註冊(和mac上出現一樣問題)
+
