@@ -79,12 +79,13 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 點擊Register, 輸入username / password，卻依然無法註冊(和mac上出現一樣問題)
 
 看chrome console發現很多ERR
-/login:1        Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
-App.js:82       POST http://localhost/api/auth/check-status 502 (Bad Gateway)
-sockjs.js:1776  GET http://localhost:8080/sockjs-node/info?t=1599554248900 net::ERR_CONNECTION_REFUSED
+  /login:1        Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
+  App.js:82       POST http://localhost/api/auth/check-status 502 (Bad Gateway)
+  sockjs.js:1776  GET http://localhost:8080/sockjs-node/info?t=1599554248900 net::ERR_CONNECTION_REFUSED
 
-使用二招..
-(1)在docker-compose，增加8080:8080, 8081:8081
+
+使用二招..(https://github.com/webpack-contrib/webpack-serve/issues/56)
+(1)docker-compose.yml 增加 8080:8080, 8081:8081
 frontend:
   build:
     context: ./services/frontend
@@ -94,7 +95,7 @@ frontend:
     - 8080:8080
     - 8081:8081
 
-(2)在nginx/dev.conf，補add_header Access-Control-Allow-Origin *;
+(2) nginx/dev.conf 增加 add_header Access-Control-Allow-Origin *;
 location / {
   add_header Access-Control-Allow-Origin *;
   proxy_pass http://frontend:8080;
@@ -105,8 +106,15 @@ location / {
   proxy_set_header X-Forwarded-Host $server_name;
 }
 
+
 然後
 restart docker
 docker stop annomachine_nginx_1
 docker ps    (name下不能有東西)
 docker-compose up -d --build
+
+成功去除 GET http://localhost:8080/sockjs-node/info?t=1599554248900 net::ERR_CONNECTION_REFUSED
+但是 localhost > register後，依然出現ERR
+  App.js:108  GET http://localhost/api/images/ 502 (Bad Gateway)
+  /images:1   Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
+  App.js:186  POST http://localhost/api/auth/register 502 (Bad Gateway)
