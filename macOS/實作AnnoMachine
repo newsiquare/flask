@@ -48,3 +48,10 @@ tasklist /FI "PID eq 4"
 System                           4 Services                   0        876 K
 
 檢查發現 4 的是 SYSTEM 這個程序占用。
+
+[解決] https://killerbryant.pixnet.net/blog/post/43104454
+<strong>解決方法：修改註冊表</strong>
+1. WIN符號+R，輸入"regedit"。
+2. 位置 "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP"
+3. 把 REG_DWORD 類型的項 Start 的值改為 0，重啟電腦。
+<註>如果有安裝skype ，也可能佔用到80 port。到skype設定，將預設的port號改掉即可。
