@@ -1,8 +1,7 @@
 下載 https://github.com/jsbroks/coco-annotator
-打開 Docker
-執行 docker-compose up -d --build
-打開 chrome
-輸入 localhost:5000
+打開 Docker desktop
+執行 docker-compose up (或docker-compose up -d --build)
+打開 chrome, 輸入 localhost:5000
 進入首頁 > 建立個人帳號/密碼 > 登入
 
 建立一個新的Datasets，取名test109
