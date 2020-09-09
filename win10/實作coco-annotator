@@ -1,8 +1,13 @@
 下載 https://github.com/jsbroks/coco-annotator
 打開 Docker
 執行 docker-compose up -d --build
+打開 chrome
+輸入 localhost:5000
+進入首頁 >建立個人帳號/密碼 > 登入
 
-
+建立一個新的datasets，取名test109
+目前新的images沒有上傳按鈕，必須直接丟入資料夾 /datasets/test109
+回到Datasets畫面，點scan就會出現剛剛上傳的images
 
 
 
