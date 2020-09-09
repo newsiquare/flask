@@ -3,9 +3,9 @@
 執行 docker-compose up -d --build
 打開 chrome
 輸入 localhost:5000
-進入首頁 >建立個人帳號/密碼 > 登入
+進入首頁 > 建立個人帳號/密碼 > 登入
 
-建立一個新的datasets，取名test109
+建立一個新的Datasets，取名test109
 目前新的images沒有上傳按鈕，必須直接丟入資料夾 /datasets/test109
 回到Datasets畫面，點scan就會出現剛剛上傳的images
 
@@ -25,3 +25,5 @@ docker-compose stop [容器名稱，沒有名稱則是停止所有yml設定的�
 docker-compose rm -v: 移除所有yml設定且停止的容器，參數-v是移除data volumne
 docker-compose ps: 列出在yml裡面被設定的容器
 docker-compose build: 執行yml裡面有設定過的build
+docker-compose up (相當於單一container的docker run)
+docker-compose up --build(告訴docker-compose rebuild後run)
