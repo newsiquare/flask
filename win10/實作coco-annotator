@@ -1,4 +1,6 @@
 下載 https://github.com/jsbroks/coco-annotator
+官方實作指導 https://github.com/jsbroks/coco-annotator/wiki/Getting-Started#Production-Build
+
 打開 Docker desktop
 執行 docker-compose up (或docker-compose up -d --build)
 打開 chrome, 輸入 localhost:5000
