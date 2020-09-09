@@ -28,5 +28,7 @@ docker-compose stop [容器名稱，沒有名稱則是停止所有yml設定的�
 docker-compose rm -v: 移除所有yml設定且停止的容器，參數-v是移除data volumne
 docker-compose ps: 列出在yml裡面被設定的容器
 docker-compose build: 執行yml裡面有設定過的build
-docker-compose up (相當於單一container的docker run)
+docker-compose up (從Dockerhub抓並docker run)
 docker-compose up --build(告訴docker-compose rebuild後run)
+docker-compose down (Stopping Container, docker-compse ps 全數消失)
+docker-compose -f docker-compose.dev.yml up --build (Development Build, 指定檔案docker-compose.dev.yml)
