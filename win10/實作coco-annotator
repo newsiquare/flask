@@ -4,3 +4,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+========================================================================
+docker-compose build
+docker-compose start [容器名稱，沒有名稱則是啟動所有yml設定的容器]
+docker-compose stop [容器名稱，沒有名稱則是停止所有yml設定的容器]
+docker-compose rm -v: 移除所有yml設定且停止的容器，參數-v是移除data volumne
+docker-compose ps: 列出在yml裡面被設定的容器
+docker-compose build: 執行yml裡面有設定過的build
