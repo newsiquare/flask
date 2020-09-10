@@ -5,7 +5,7 @@ https://github.com/chunml/annomachine
 之後無法再CMD內執行 ./test.sh
 
 在安裝Git
-用Git CMD可執行 ./test.sh
+用Git CMD可執行 test.sh
 
 用VSCode CMD執行
 docker-compose up -d --build
